@@ -1,0 +1,37 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Website {
+  brandingAnalysis  String?
+  colorPsychology   String?
+  createdAt         DateTime @default(now())
+  id                String   @id @default(cuid())
+  messagingAnalysis String?
+  updatedAt         DateTime @updatedAt
+  url               String?
+}
+
+model AnalysisResult {
+  analysisCategory EnumAnalysisResultAnalysisCategory?
+  analysisResult   String?
+  analysisType     EnumAnalysisResultAnalysisType?
+  createdAt        DateTime                            @default(now())
+  detailedResult   String?
+  id               String                              @id @default(cuid())
+  result           String?
+  updatedAt        DateTime                            @updatedAt
+}
+
+enum EnumAnalysisResultAnalysisCategory {
+  Option1
+}
+
+enum EnumAnalysisResultAnalysisType {
+  Option1
+}
