@@ -46,6 +46,9 @@ export class WebsiteServiceBase {
   ): Promise<PrismaWebsite> {
     return this.prisma.website.delete(args);
   }
+  async AnalyzeWebsite(args: WebsiteSubmitInput): Promise<string> {
+    throw new Error("Not implemented");
+  }
   async SubmitWebsite(args: string): Promise<string> {
     throw new Error("Not implemented");
   }

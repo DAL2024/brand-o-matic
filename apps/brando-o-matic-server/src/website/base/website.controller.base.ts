@@ -151,6 +151,23 @@ export class WebsiteControllerBase {
     }
   }
 
+  @common.Post("/analyzeWebsite")
+  @swagger.ApiOkResponse({
+    type: String,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async AnalyzeWebsite(
+    @common.Body()
+    body: WebsiteSubmitInput
+  ): Promise<string> {
+    return this.service.AnalyzeWebsite(body);
+  }
+
   @common.Get("/:id/submit-website")
   @swagger.ApiOkResponse({
     type: String,

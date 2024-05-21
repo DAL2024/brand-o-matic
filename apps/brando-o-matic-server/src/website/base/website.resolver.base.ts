@@ -100,6 +100,14 @@ export class WebsiteResolverBase {
   }
 
   @graphql.Query(() => String)
+  async AnalyzeWebsite(
+    @graphql.Args()
+    args: WebsiteSubmitInput
+  ): Promise<string> {
+    return this.service.AnalyzeWebsite(args);
+  }
+
+  @graphql.Query(() => String)
   async SubmitWebsite(
     @graphql.Args()
     args: string
